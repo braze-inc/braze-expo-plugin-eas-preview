@@ -1,0 +1,49 @@
+{
+  "name": "@braze/expo-plugin",
+  "version": "2.1.2",
+  "description": "Config plugin for @braze/react-native-sdk package",
+  "main": "build/withBraze.js",
+  "types": "build/withBraze.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/braze-inc/braze-expo-plugin"
+  },
+  "author": "Braze",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/braze-inc/braze-expo-plugin/issues"
+  },
+  "homepage": "https://github.com/braze-inc/braze-expo-plugin#readme",
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean"
+  },
+  "keywords": [
+    "react",
+    "expo",
+    "config-plugins",
+    "prebuild",
+    "react-native-appboy-sdk",
+    "braze",
+    "appboy",
+    "analytics",
+    "segmentation"
+  ],
+  "jest": {
+    "preset": "expo-module-scripts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "expo": "^48.0.0",
+    "expo-module-scripts": "^3.0.4"
+  },
+  "peerDependencies": {
+    "expo": ">=47.0.0"
+  },
+  "peerDependenciesMeta": {
+    "expo": {
+      "optional": true
+    }
+  }
+}

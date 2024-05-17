@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+group = 'host.exp.exponent'
+version = '0.0.1'
+
+buildscript {
+  // Simple helper that allows the root project to override versions declared by this library.
+  ext.safeExtGet = { prop, fallback ->
+    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+  }
+
+  repositories {
+    google()
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${safeExtGet('kotlinVersion', '1.8.10')}")
+  }
+}
+
+android {
+  compileSdkVersion safeExtGet("compileSdkVersion", 34)
+  def agpVersion = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION
+
+  // Apply these features only if the Android Gradle Plugin version is 7.0.0 or higher.
+  if (agpVersion.tokenize('.')[0].toInteger() >= 7) {
+    namespace "expo.modules.adapters.braze"
+    buildFeatures {
+      buildConfig true
+    }
+  }
+
+  defaultConfig {
+    minSdkVersion safeExtGet("minSdkVersion", 21)
+    targetSdkVersion safeExtGet("targetSdkVersion", 34)
+    versionCode 1
+    versionName '1.1.0'
+  }
+  lintOptions {
+    abortOnError false
+  }
+}
+
+dependencies {
+  implementation project(':expo-modules-core')
+  implementation project(':braze_react-native-sdk')
+
+  //noinspection GradleDynamicVersion
+  implementation 'com.facebook.react:react-native:+'
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:${safeExtGet('kotlinVersion', '1.8.10')}"
+}
